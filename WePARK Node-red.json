@@ -1,0 +1,533 @@
+[
+    {
+        "id": "2eeb57065963b452",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c53c7b3e50508ea9",
+        "type": "ibmiot in",
+        "z": "2eeb57065963b452",
+        "authentication": "apiKey",
+        "apiKey": "d458db3860971fd6",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "",
+        "applicationId": "",
+        "deviceType": "+",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": true,
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 210,
+        "y": 60,
+        "wires": [
+            [
+                "45eb1dc02dd89345",
+                "4e0e35572fa69bd2",
+                "0c5b5e8e359e29c5"
+            ]
+        ]
+    },
+    {
+        "id": "45eb1dc02dd89345",
+        "type": "function",
+        "z": "2eeb57065963b452",
+        "name": "Slot 1",
+        "func": "msg.payload = msg.payload.Slot_1;\nglobal.set(\"s1\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 40,
+        "wires": [
+            [
+                "10f7ebf7d638a175"
+            ]
+        ]
+    },
+    {
+        "id": "10f7ebf7d638a175",
+        "type": "debug",
+        "z": "2eeb57065963b452",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "16b848458ad9a1e8",
+        "type": "http response",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 690,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "f5f39d9dfbc90a16",
+        "type": "function",
+        "z": "2eeb57065963b452",
+        "name": "function 3",
+        "func": "msg.payload = { \"Slot_1\": global.get(\"s1\"), \"Slot_2\": global.get(\"s2\"), \"Slot_3\": global.get(\"s3\") };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 180,
+        "wires": [
+            [
+                "16b848458ad9a1e8"
+            ]
+        ]
+    },
+    {
+        "id": "4e0e35572fa69bd2",
+        "type": "function",
+        "z": "2eeb57065963b452",
+        "name": "Slot 2",
+        "func": "msg.payload = msg.payload.Slot_2;\nglobal.set(\"s2\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 80,
+        "wires": [
+            [
+                "10f7ebf7d638a175"
+            ]
+        ]
+    },
+    {
+        "id": "0c5b5e8e359e29c5",
+        "type": "function",
+        "z": "2eeb57065963b452",
+        "name": "Slot 3",
+        "func": "msg.payload = msg.payload.Slot_3;\nglobal.set(\"s3\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 120,
+        "wires": [
+            [
+                "10f7ebf7d638a175"
+            ]
+        ]
+    },
+    {
+        "id": "e659b4be97014741",
+        "type": "http in",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "url": "/command",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 660,
+        "wires": [
+            [
+                "ec73e0fa8a197a2c",
+                "e941990c92c20b08",
+                "c77ff64d81080a07"
+            ]
+        ]
+    },
+    {
+        "id": "ec73e0fa8a197a2c",
+        "type": "ibmiot out",
+        "z": "2eeb57065963b452",
+        "authentication": "apiKey",
+        "apiKey": "d458db3860971fd6",
+        "outputType": "cmd",
+        "deviceId": "1234",
+        "deviceType": "abcd",
+        "eventCommandType": "command",
+        "format": "String",
+        "data": "Data",
+        "qos": 0,
+        "name": "IBM IoT",
+        "service": "registered",
+        "x": 860,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "e941990c92c20b08",
+        "type": "debug",
+        "z": "2eeb57065963b452",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "c77ff64d81080a07",
+        "type": "http response",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 530,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "d4d51f4d9c74c079",
+        "type": "ui_button",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "group": "4e39a2c8bcd0644a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESERVE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Reserve slot-1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 260,
+        "wires": [
+            [
+                "ec73e0fa8a197a2c",
+                "10f7ebf7d638a175"
+            ]
+        ]
+    },
+    {
+        "id": "56869f9c9b186a71",
+        "type": "ui_button",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "group": "4e39a2c8bcd0644a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESERVE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Reserve slot-2",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 380,
+        "wires": [
+            [
+                "ec73e0fa8a197a2c",
+                "10f7ebf7d638a175"
+            ]
+        ]
+    },
+    {
+        "id": "fee3e08ef8c2affc",
+        "type": "ui_button",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "group": "4e39a2c8bcd0644a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RELEASE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Release slot-3",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 560,
+        "wires": [
+            [
+                "ec73e0fa8a197a2c",
+                "10f7ebf7d638a175"
+            ]
+        ]
+    },
+    {
+        "id": "76fd790a1d7c7972",
+        "type": "ui_button",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "group": "4e39a2c8bcd0644a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RELEASE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Release slot-2",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 440,
+        "wires": [
+            [
+                "ec73e0fa8a197a2c",
+                "10f7ebf7d638a175"
+            ]
+        ]
+    },
+    {
+        "id": "b15a7ee5b2fe75bf",
+        "type": "ui_button",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "group": "4e39a2c8bcd0644a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RELEASE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Release slot-1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "ec73e0fa8a197a2c",
+                "10f7ebf7d638a175"
+            ]
+        ]
+    },
+    {
+        "id": "17c54645a7d92cd1",
+        "type": "ui_button",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "group": "4e39a2c8bcd0644a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESERVE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Reserve slot-3",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 500,
+        "wires": [
+            [
+                "ec73e0fa8a197a2c",
+                "10f7ebf7d638a175"
+            ]
+        ]
+    },
+    {
+        "id": "e9708862f504b5b7",
+        "type": "inject",
+        "z": "2eeb57065963b452",
+        "name": "OTP generation",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "num",
+        "x": 690,
+        "y": 600,
+        "wires": [
+            [
+                "df8880063949823a"
+            ]
+        ]
+    },
+    {
+        "id": "df8880063949823a",
+        "type": "function",
+        "z": "2eeb57065963b452",
+        "name": "function 6",
+        "func": "msg.payload = Math.round(Math.random() * 10000);\nglobal.set(\"otp\",msg.payload)\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 640,
+        "wires": [
+            [
+                "52d840bfd1738468"
+            ]
+        ]
+    },
+    {
+        "id": "52d840bfd1738468",
+        "type": "debug",
+        "z": "2eeb57065963b452",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "a64a61b0b19aaa97",
+        "type": "http in",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "url": "/otp",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 800,
+        "y": 700,
+        "wires": [
+            [
+                "377993baf867e2cd"
+            ]
+        ]
+    },
+    {
+        "id": "377993baf867e2cd",
+        "type": "function",
+        "z": "2eeb57065963b452",
+        "name": "function 7",
+        "func": "msg.payload = {\"otp\":global.get(\"otp\")}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 700,
+        "wires": [
+            [
+                "581655b34a9e0532"
+            ]
+        ]
+    },
+    {
+        "id": "581655b34a9e0532",
+        "type": "http response",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1150,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "75af9416ec7c4529",
+        "type": "http in",
+        "z": "2eeb57065963b452",
+        "name": "",
+        "url": "/sensor",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "f5f39d9dfbc90a16"
+            ]
+        ]
+    },
+    {
+        "id": "d458db3860971fd6",
+        "type": "ibmiot",
+        "name": "IBMiotapi",
+        "keepalive": "60",
+        "serverName": "",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "4e39a2c8bcd0644a",
+        "type": "ui_group",
+        "name": "SmartSwitchBoard",
+        "tab": "d4498a8b62b05c9e",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "d4498a8b62b05c9e",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
