@@ -33,8 +33,23 @@ WePARK is an intelligent parking management solution that leverages IoT, cloud s
   Enables seamless interaction between hardware, cloud, and mobile platforms.
 
 
-# Wokwi Simulator
+## Wokwi Simulator
 The Wokwi simulator and the code for it can be found in the following link: [Wokwi Simulator](https://wokwi.com/projects/368676828824469505)
+
+
+## Architecture
+
+```mermaid
+graph TD
+    A[User App] -->|Reserve Slot| B[Firebase]
+    B --> C[IBM Cloud]
+    C --> D[Node-RED Flow]
+    D --> E[ESP32 Microcontroller]
+    E -->|Sensors & Servo| F[Parking Hardware]
+    F --> E
+    E -->|Update| C
+    C -->|Notify| A
+```
 
 
 ## Future Enhancements
